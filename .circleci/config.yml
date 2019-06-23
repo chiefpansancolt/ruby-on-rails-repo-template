@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     environment:
-      CC_TEST_REPORTER_ID: 9bf8016985f84eecd3a34190b2b442a259b4c142e3d61fa4af68b87c2aebba34
+      CC_TEST_REPORTER_ID: 5e29820a468467924d555276c046193a3b9bec0233e17d55c43c9786fb8d074d
     working_directory: ~/ruby-on-rails-repo-template
     docker:
       - image: circleci/ruby:2.6.3-node
