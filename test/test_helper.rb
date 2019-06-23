@@ -4,8 +4,8 @@ require "simplecov"
 
 SimpleCov.formatter = SimpleCov::Formatter::HTMLFormatter
 SimpleCov.start "rails"
-SimpleCov.minimum_coverage 90
-SimpleCov.minimum_coverage_by_file 90
+# SimpleCov.minimum_coverage 90
+# SimpleCov.minimum_coverage_by_file 90
 
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
