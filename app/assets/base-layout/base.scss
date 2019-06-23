@@ -1,0 +1,35 @@
+$mdc-theme-primary: #673AB7;
+$mdc-theme-secondary: #29B6F6;
+$mdc-theme-on-primary: #FFF;
+$mdc-theme-on-secondary: #000;
+$mdc-theme-text-primary-on-light: #9A67EA;
+$mdc-theme-text-primary-on-dark: #320B86;
+$mdc-theme-text-secondary-on-light: #73E8FF;
+$mdc-theme-text-secondary-on-dark: #73E8FF;
+
+@import "~@material/typography/mdc-typography";
+@import "~@material/top-app-bar/mdc-top-app-bar";
+@import "~@material/button/mdc-button";
+@import "~@material/card/mdc-card";
+@import "~@material/drawer/mdc-drawer";
+@import "~@material/list/mdc-list";
+@import "~@material/image-list/mdc-image-list";
+@import "~@material/layout-grid/mdc-layout-grid";
+@import "~@material/icon-button/mdc-icon-button";
+@import "~@material/tab-bar/mdc-tab-bar";
+@import "~@material/tab-scroller/mdc-tab-scroller";
+@import "~@material/tab-indicator/mdc-tab-indicator";
+@import "~@material/tab/mdc-tab";
+@import "~@material/form-field/mdc-form-field";
+@import "~@material/checkbox/mdc-checkbox";
+@import "~@material/select/mdc-select";
+@import "~@material/menu-surface/mdc-menu-surface";
+@import "~@material/menu/mdc-menu";
+@import "~@material/textfield/mdc-text-field";
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  position: relative;
+}
