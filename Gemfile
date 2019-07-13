@@ -25,6 +25,7 @@ group :development, :test do
   gem "rubocop-performance"
   gem "rubocop-rails"
   gem "simplecov"
+  gem "simplecov-material", git: "https://github.com/chiefpansancolt/simplecov-material.git"
 end
 
 group :development do

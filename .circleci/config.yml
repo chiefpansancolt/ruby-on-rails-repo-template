@@ -1,85 +1,172 @@
 version: 2
+
+rails: &rails
+  working_directory: ~/ruby-on-rails-repo-template
+  docker:
+    - image: circleci/ruby:2.6.3-node-browsers
+      environment:
+        BUNDLE_JOBS: 3
+        BUNDLE_RETRY: 3
+        BUNDLE_PATH: vendor/bundle
+        PGHOST: 127.0.0.1
+        PGUSER: circleci
+        RAILS_ENV: test
+        NODE_ENV: development
+    - image: circleci/postgres:9.6.6-alpine
+      environment:
+        POSTGRES_USER: circleci
+        POSTGRES_DB: ruby-on-rails-repo-template_test
+        POSTGRES_PASSWORD: ""
+    - image: redis:4.0.1
+
+build_steps:
+  - &bundle_restore_cache
+    restore_cache:
+      keys:
+        - ruby-on-rails-repo-template{{ checksum "Gemfile.lock" }}
+        - ruby-on-rails-repo-template
+
+  - &bundle_install
+    run:
+      name: Bundle Install
+      command: bundle check --path vendor/bundle || bundle install --deployment
+
+  - &bundle_save_cache
+    save_cache:
+      key: ruby-on-rails-repo-template{{ checksum "Gemfile.lock" }}
+      paths:
+        - vendor/bundle
+
+  - &install_yarn
+    run:
+      name: Update Yarn to Latest
+      command: sudo npm install -g yarn
+
+  - &yarn_restore_cache
+    restore_cache:
+      keys:
+        - ruby-on-rails-repo-template-yarn{{ checksum "yarn.lock" }}
+        - ruby-on-rails-repo-template-yarn
+
+  - &yarn_install
+    run:
+      name: Yarn Install
+      command: yarn install --frozen-lockfile
+
+  - &yarn_save_cache
+    save_cache:
+      key: ruby-on-rails-repo-template-yarn{{ checksum "yarn.lock" }}
+      paths:
+        - ~/.cache/yarn
+
+  - &database_create
+    run:
+      name: Database create
+      command: bin/rails db:create
+
+  - &database_setup
+    run:
+      name: Database setup
+      command: bin/rails db:schema:load --trace
+
+  - &setup_code_climate
+    run:
+      name: Setup Code Climate test-reporter
+      command: |
+        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+        chmod +x ./cc-test-reporter
+
+  - &run_test_cc
+    run:
+      name: Run Tests
+      command: |
+        ./cc-test-reporter before-build
+        bundle exec rake test
+        ./cc-test-reporter after-build
+      when: always
+
+  - &run_test_chrome_test
+    run:
+      name: Run Tests
+      command: bin/rails test:chrome_desktop
+      when: always
+
+  - &run_test_firefox_test
+    run:
+      name: Run Tests
+      command: bin/rails test:firefox_desktop
+      when: always
+
+  - &store_coverage
+    # collect reports
+    store_artifacts:
+      path: coverage
+      destination: coverage
+
+  - &store_test_results
+    store_test_results:
+      path: test/reports
+
 jobs:
   build:
-    environment:
-      CC_TEST_REPORTER_ID: 5e29820a468467924d555276c046193a3b9bec0233e17d55c43c9786fb8d074d
-    working_directory: ~/ruby-on-rails-repo-template
-    docker:
-      - image: circleci/ruby:2.6.3-node
-        environment:
-          BUNDLE_JOBS: 3
-          BUNDLE_RETRY: 3
-          BUNDLE_PATH: vendor/bundle
-          PGHOST: 127.0.0.1
-          PGUSER: circleci
-          RAILS_ENV: test
-          NODE_ENV: development
-      - image: circleci/postgres:9.6.6-alpine
-        environment:
-          POSTGRES_USER: circleci
-          POSTGRES_DB: ruby-on-rails-repo-template_test
-          POSTGRES_PASSWORD: ""
-      - image: redis:4.0.1
-
+    <<: *rails
     steps:
       - checkout
+      - *bundle_restore_cache
+      - *bundle_install
+      - *bundle_save_cache
+      - *install_yarn
+      - *yarn_restore_cache
+      - *yarn_install
+      - *yarn_save_cache
+      - *database_create
+      - *database_setup
 
-      # Download and Cache Dependancies for Yarn and Gems
-      - restore_cache:
-          keys:
-            - ruby-on-rails-repo-template-gem-{{ checksum "Gemfile.lock" }}
-            - ruby-on-rails-repo-template-gem-
+  test:
+    <<: *rails
+    steps:
+      - checkout
+      - *bundle_restore_cache
+      - *bundle_install
+      - *bundle_save_cache
+      - *install_yarn
+      - *yarn_restore_cache
+      - *yarn_install
+      - *yarn_save_cache
+      - *database_create
+      - *database_setup
+      - *setup_code_climate
+      - *run_test_cc
+      - *store_coverage
+      - *store_test_results
 
-      - run:
-          name: Bundle Install
-          command: bundle check || bundle install
-
-      - save_cache:
-          key: ruby-on-rails-repo-template-gem-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
-
-      - restore_cache:
-          keys:
-            - ruby-on-rails-repo-template-yarn-{{ checksum "yarn.lock" }}
-            - ruby-on-rails-repo-template-yarn-
-
-      - run:
-          name: Yarn Install
-          command: yarn install --cache-folder ~/.cache/yarn
-
-      - save_cache:
-          key: ruby-on-rails-repo-template-yarn-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
-
-      # Setup Database
-      - run:
-          name: Build Database
-          command: bin/rails db:create
-
-      - run:
-          name: Database setup
-          command: bin/rails db:schema:load
-
-      # Run Test Classes
-      - run:
-          name: Setup Code Climate test-reporter
-          command: |
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-            chmod +x ./cc-test-reporter
-      - run:
-          name: Run Test
-          command: |
-            ./cc-test-reporter before-build
-            bundle exec rake test
-            ./cc-test-reporter after-build
-          when: always
-
-      # Collect Reports
-      - store_artifacts:
-          path: coverage
-          destination: coverage
-
-      - store_test_results:
-          path: test/reports
+workflows:
+  version: 2
+  build_accept_deploy:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      # - test_chrome_desktop:
+      #     requires:
+      #       - build
+      #       - test
+      # - chrome_phone:
+      #     requires:
+      #       - build
+      #       - test
+      # - test_firefox_desktop:
+      #     requires:
+      #       - build
+      #       - test
+      # - firefox_phone:
+      #     requires:
+      #       - build
+      #       - test
+      # - deploy:
+      #     requires:
+      #       - chrome_desktop
+      #       - chrome_phone
+      #       - firefox_desktop
+      #       - firefox_phone

@@ -2,7 +2,7 @@
 
 require "simplecov"
 
-SimpleCov.formatter = SimpleCov::Formatter::HTMLFormatter
+SimpleCov.formatter = SimpleCov::Formatter::MaterialFormatter
 SimpleCov.start "rails"
 # SimpleCov.minimum_coverage 90
 # SimpleCov.minimum_coverage_by_file 90
