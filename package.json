@@ -7,7 +7,7 @@
     "lint:ruby": "rubocop -a",
     "lint:markdown": "mdl README.md",
     "lint:haml": "haml-lint app/views/**/*",
-    "lint:js": "eslint app/**/*.js",
+    "lint:js": "eslint app babel.config.js postcss.config.js",
     "lint:css": "stylelint app/**/*.scss",
     "lint": "npm-run-all lint:*",
     "dev:start": "foreman start -f Procfile.dev",
