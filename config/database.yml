@@ -5,14 +5,14 @@ default: &default
 
 development:
   <<: *default
-  database: rubocop_config_builder_development
+  database: ruby_on_rails_template_development
 
 test:
   <<: *default
-  database: rubocop_config_builder_test
+  database: ruby_on_rails_template_test
 
 production:
   <<: *default
-  database: rubocop_config_builder_production
-  username: rubocop_config_builder
-  password: <%= ENV['GAMFILE_DATABASE_PASSWORD'] %>
+  database: ruby_on_rails_template_production
+  username: ruby_on_rails_template
+  password: <%= ENV['DATABASE_PASSWORD'] %>

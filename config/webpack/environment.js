@@ -6,6 +6,9 @@ const webpack = require('webpack')
 environment.plugins.prepend(
   'Provide',
   new webpack.ProvidePlugin({
+    $: 'jquery',
+    jquery: 'jquery',
+    jQuery: 'jquery',
     swal: 'sweetalert2'
   })
 )
