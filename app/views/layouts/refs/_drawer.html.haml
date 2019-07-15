@@ -1,3 +1,7 @@
-%aside.mdc-drawer.mdc-drawer--dismissible
+%aside.mdc-drawer.mdc-drawer--modal
   .mdc-drawer__content
-    .mdc-list
+    %nav.mdc-list
+      %a.mdc-list-item.mdc-list-item--activated{ href: "#", "aria-current": "page" }
+        %i.material-icons.mdc-list-item__graphic inbox
+        %span.mdc-list-item__text Page Name here
+.mdc-drawer-scrim
