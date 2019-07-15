@@ -63,34 +63,44 @@
 		}
 	},
 	"plugins": {
+    "brakeman": {
+      "enabled": true
+    },
+    "bundler-audit": {
+      "enabled": true
+    },
+    "duplication": {
+      "enabled": true
+    },
 		"rubocop": {
 			"enabled": true,
 			"channel": "rubocop-0-71"
 		},
 		"eslint": {
-			"enabled": true
-		},
-		"brakeman": {
-			"enabled": true
-		},
-		"haml-lint": {
-			"enabled": true
+			"enabled": true,
+      "channel": "eslint-5",
+      "config": {
+        "config": "./.eslintrc"
+      },
+      "extensions": [
+        ".js",
+        ".js.erb"
+      ]
 		},
 		"stylelint": {
-			"enabled": true
-		}
+			"enabled": true,
+      "extensions": [
+        ".scss",
+        ".css"
+      ]
+		},
+    "markdownlint": {
+      "enabled": true
+    }
 	},
 	"exclude_patterns": [
-		"config/",
-		"db/",
-		"dist/",
-		"features/",
+    "**/public/",
 		"**/node_modules/",
-		"script/",
-		"**/spec/",
-		"**/test/",
-		"**/tests/",
-		"**/vendor/",
 		"**/*.d.ts"
 	]
 }
