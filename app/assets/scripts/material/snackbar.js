@@ -1,7 +1,10 @@
 import {MDCSnackbar} from '@material/snackbar';
 
-const snackbar = new MDCSnackbar(document.querySelector('.mdc-snackbar'));
+const snackbar = document.querySelector('.mdc-snackbar');
 
-window.showSnackbar = function() {
-  snackbar.open();
-};
+if (snackbar) {
+  const sbar = new MDCSnackbar(snackbar);
+  window.showSnackbar = function() {
+    sbar.open();
+  };
+}

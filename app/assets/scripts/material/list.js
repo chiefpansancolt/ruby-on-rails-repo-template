@@ -2,7 +2,9 @@ import {MDCList} from '@material/list';
 
 const lists = document.querySelectorAll('.mdc-list');
 
-for (var i = 0; i < lists.length; i++) {
-  var list = MDCList.attachTo(lists[i]);
-  list.wrapFocus = true;
+if (lists) {
+  for (var i = 0; i < lists.length; i++) {
+    var list = MDCList.attachTo(lists[i]);
+    list.wrapFocus = true;
+  }
 }

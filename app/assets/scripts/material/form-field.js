@@ -6,14 +6,20 @@ const textFields = document.querySelectorAll('.mdc-text-field');
 const labels = document.querySelectorAll('.mdc-floating-label');
 const helperTexts = document.querySelectorAll('.mdc-text-field-helper-text');
 
-for (var i = 0; i < textFields.length; i++) {
-  new MDCTextField(textFields[i]);
+if (textFields) {
+  for (var i = 0; i < textFields.length; i++) {
+    new MDCTextField(textFields[i]);
+  }
 }
 
-for (var l = 0; l < labels.length; l++) {
-  new MDCFloatingLabel(labels[l]);
+if (labels) {
+  for (var l = 0; l < labels.length; l++) {
+    new MDCFloatingLabel(labels[l]);
+  }
 }
 
-for (var a = 0; a < helperTexts.length; a++) {
-  new MDCTextFieldHelperText(helperTexts[a]);
+if (helperTexts) {
+  for (var a = 0; a < helperTexts.length; a++) {
+    new MDCTextFieldHelperText(helperTexts[a]);
+  }
 }
