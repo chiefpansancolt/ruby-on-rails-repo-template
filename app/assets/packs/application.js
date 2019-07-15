@@ -1,12 +1,15 @@
 /* eslint no-console:0 */
-import '../base-layout/base';
-import '../base-layout/material-icons';
+import '../styles/base';
+import '../styles/errors';
+import '../styles/material-icons';
 
-import '../materialize/topbar';
-import '../materialize/ripple';
-import '../materialize/list';
-import '../materialize/button';
-import '../materialize/tab';
-import '../materialize/form-field';
+import '../scripts/init';
+import '../scripts/notification';
+import '../scripts/material/topbar';
+import '../scripts/material/ripple';
+import '../scripts/material/list';
+import '../scripts/material/button';
+import '../scripts/material/snackbar';
+import '../scripts/material/form-field';
 
 require.context('../images', true);

@@ -1,0 +1,97 @@
+$mdc-theme-primary: #673AB7;
+$mdc-theme-secondary: #29B6F6;
+$mdc-theme-on-primary: #FFF;
+$mdc-theme-on-secondary: #000;
+$mdc-theme-text-primary-on-light: #9A67EA;
+$mdc-theme-text-primary-on-dark: #320B86;
+$mdc-theme-text-secondary-on-light: #73E8FF;
+$mdc-theme-text-secondary-on-dark: #73E8FF;
+
+@import "~material-components-web/material-components-web";
+@import "~sweetalert2/dist/sweetalert2";
+
+body {
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  flex: {
+    direction: column;
+  }
+}
+
+.app-bar {
+  position: absolute;
+
+  a {
+    color: inherit;
+    text: {
+      decoration: none;
+    }
+  }
+}
+
+main {
+  flex: 1 0 auto;
+
+  &.main-content {
+    height: 100vh;
+    overflow: auto;
+  }
+}
+
+section {
+
+  &.page-footer {
+    background: {
+      color: #202124;
+    }
+
+    bottom: 0;
+    color: #FAFAFA;
+    display: flex;
+    height: 50px;
+    position: absolute;
+    width: 100%;
+    z: {
+      index: 10;
+    }
+
+    div {
+      display: inline-flex;
+      flex: 1 1 auto;
+      padding: 8px 12px;
+      align: {
+        items: center;
+      }
+      min: {
+        width: 0;
+      }
+      z: {
+        index: 1;
+      }
+      padding: {
+        left: 15px;
+        top: 15px;
+      }
+
+      &.left {
+        justify: {
+          content: flex-start;
+        }
+      }
+
+      &.right {
+        justify: {
+          content: flex-end;
+        }
+      }
+
+      a {
+        color: #FAFAFA !important;
+        text: {
+          decoration: none;
+        }
+      }
+    }
+  }
+}
