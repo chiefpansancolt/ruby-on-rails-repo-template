@@ -4,15 +4,22 @@
   "description": "Ruby on rails 6.0 Already generated Repo Template for Github",
   "private": true,
   "scripts": {
-    "lint:rubocop": "rubocop",
+    "lint:ruby": "rubocop -a",
+    "lint:markdown": "mdl README.md",
     "lint:haml": "haml-lint app/views/**/*",
     "lint:js": "eslint app/**/*.js",
     "lint:css": "stylelint app/**/*.scss",
     "lint": "npm-run-all lint:*",
     "dev:start": "foreman start -f Procfile.dev",
-    "test:start": "bundle exec rake test",
-    "test:open": "open coverage/index.html",
-    "test": "npm-run-all test:*"
+    "test:main:start": "bundle exec rake test",
+    "test:main:open": "open coverage/index.html",
+    "test:main": "npm-run-all test:*",
+    "test:chrome:start": "rails test:chrome",
+    "test:chrome:open": "open coverage/index.html",
+    "test:chrome": "npm-run-all test:*",
+    "test:firefox:start": "rails test:firefox",
+    "test:firefox:open": "open coverage/index.html",
+    "test:firefox": "npm-run-all test:*"
   },
   "homepage": "",
   "repository": {
@@ -33,6 +40,8 @@
   "dependencies": {
     "@rails/webpacker": "^4.0.2",
     "actioncable": "^5.2.2",
+    "jquery": "^3.4.1",
+    "jquery-ujs": "^1.2.2",
     "material-components-web": "^1.0.1",
     "material-design-icons-iconfont": "^5.0.1",
     "rails-erb-loader": "^5.5.2",
@@ -41,8 +50,8 @@
     "webpack-merge": "^4.2.1"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.1",
     "eslint": "^5.15.1",
+    "eslint-config-google": "^0.13.0",
     "npm-run-all": "^4.1.5",
     "stylelint": "^9.10.1",
     "stylelint-config-standard": "^18.2.0",

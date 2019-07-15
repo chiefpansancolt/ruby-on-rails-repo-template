@@ -12,7 +12,7 @@
         .mdc-top-app-bar__row
           %section.mdc-top-app-bar__section.mdc-top-app-bar__section--align-start
             %a.material-icons.mdc-top-app-bar__navigation-icon{ href: "javascript:void(0);" } menu
-            %span.mdc-top-app-bar__title= I18n.t "site_title"
+            %a.mdc-top-app-bar__title{ href: root_path }= I18n.t "site_title"
       %main.main-content#main-content
         .mdc-top-app-bar--fixed-adjust
           = yield
