@@ -88,13 +88,13 @@ build_steps:
   - &run_test_chrome_test
     run:
       name: Run Tests
-      command: bin/rails test:chrome_desktop
+      command: bin/rails test:chrome
       when: always
 
   - &run_test_firefox_test
     run:
       name: Run Tests
-      command: bin/rails test:firefox_desktop
+      command: bin/rails test:firefox
       when: always
 
   - &store_coverage
@@ -140,6 +140,40 @@ jobs:
       - *store_coverage
       - *store_test_results
 
+  test_chrome:
+    <<: *rails
+    steps:
+      - checkout
+      - *bundle_restore_cache
+      - *bundle_install
+      - *bundle_save_cache
+      - *install_yarn
+      - *yarn_restore_cache
+      - *yarn_install
+      - *yarn_save_cache
+      - *database_create
+      - *database_setup
+      - *run_test_chrome_test
+      - *store_coverage
+      - *store_test_results
+
+  test_firefox:
+    <<: *rails
+    steps:
+      - checkout
+      - *bundle_restore_cache
+      - *bundle_install
+      - *bundle_save_cache
+      - *install_yarn
+      - *yarn_restore_cache
+      - *yarn_install
+      - *yarn_save_cache
+      - *database_create
+      - *database_setup
+      - *run_test_firefox_test
+      - *store_coverage
+      - *store_test_results
+
 workflows:
   version: 2
   build_accept_deploy:
@@ -148,25 +182,15 @@ workflows:
       - test:
           requires:
             - build
-      # - test_chrome_desktop:
-      #     requires:
-      #       - build
-      #       - test
-      # - chrome_phone:
-      #     requires:
-      #       - build
-      #       - test
-      # - test_firefox_desktop:
-      #     requires:
-      #       - build
-      #       - test
-      # - firefox_phone:
-      #     requires:
-      #       - build
-      #       - test
+      - test_chrome:
+          requires:
+            - build
+            - test
+      - test_firefox:
+          requires:
+            - build
+            - test
       # - deploy:
       #     requires:
       #       - chrome_desktop
-      #       - chrome_phone
       #       - firefox_desktop
-      #       - firefox_phone
