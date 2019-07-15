@@ -1,18 +1,18 @@
 %html
   %head
     %meta{ content: "text/html; charset=UTF-8", "http-equiv": "Content-Type" }/
-    %title= I18n.t "site_title"
+    %title= I18n.t "tab_title"
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_pack_tag "application"
   %body.mdc-typography
     = render "layouts/refs/drawer"
     .mdc-drawer-app-content
-      %header.mdc-top-app-bar.mdc-top-app-bar--fixed#app-bar
+      %header.mdc-top-app-bar.mdc-top-app-bar--fixed.app-bar#app-bar
         .mdc-top-app-bar__row
           %section.mdc-top-app-bar__section.mdc-top-app-bar__section--align-start
             %a.material-icons.mdc-top-app-bar__navigation-icon{ href: "javascript:void(0);" } menu
-            %a.mdc-top-app-bar__title{ href: root_path }= I18n.t "site_title"
+            %a.mdc-top-app-bar__title{ href: root_path }= I18n.t "title"
       %main.main-content#main-content
         .mdc-top-app-bar--fixed-adjust
           = yield

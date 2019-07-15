@@ -1,0 +1,22 @@
+en:
+  error:
+    not_found:
+      error-code1: 4
+      error-code2: 0
+      error-code3: 4
+      message:  Oops! Page not found
+      sub-message: We are sorry, but the page you requested was not found!
+      button-text: Go Back Home
+    change_request_error:
+      error-code1: 4
+      error-code2: 2
+      error-code3: 2
+      sub-message: Sorry but we couldn’t process your request please try again soon!
+      button-text: Go Back Home
+    internal_server_error:
+      error-code1: 5
+      error-code2: 0
+      error-code3: 0
+      message: Well, you broke the internet!
+      sub-message: Just kidding, looks like we have an internal issue, please try again in couple minutes.
+      button-text: Go Back Home

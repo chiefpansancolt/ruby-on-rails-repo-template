@@ -1,8 +1,10 @@
-.error-container.center
-  .error-code#error-code
-    500
-  .message#message
-    Well, you broke the internet!
-  .sub-message#sub-message
-    Just kidding, looks like we have an internal issue, please try again in couple minutes
-  = link_to "Return Home", root_path
+.error-container
+  .error-surface
+    .error
+      %h3= t ".message"
+      %h1
+        %span= t ".error-code1"
+        %span= t ".error-code2"
+        %span= t ".error-code3"
+    %h2= t ".sub-message"
+    = link_to t(".button-text"), root_path

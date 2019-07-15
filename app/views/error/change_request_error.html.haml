@@ -1,6 +1,9 @@
-.error-container.center
-  .error-code#error-code
-    422
-  .message#message
-    Sorry but we couldn’t process your request please try again soon!
-  = link_to "Go Back Home", root_path
+.error-container
+  .error-surface
+    .error
+      %h1
+        %span= t ".error-code1"
+        %span= t ".error-code2"
+        %span= t ".error-code3"
+    %h2= t ".sub-message"
+    = link_to t(".button-text"), root_path
