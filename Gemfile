@@ -9,21 +9,17 @@ gem "bootsnap", ">= 1.4.1", require: false
 gem "bugsnag"
 gem "devise"
 gem "haml"
-gem "jbuilder", "~> 2.5"
+gem "jbuilder"
 gem "kaminari"
 gem "pg", ">= 0.18", "< 2.0"
 gem "pry-rails"
-gem "puma", "~> 3.11"
+gem "puma"
 gem "rails", "~> 6.0.0.rc1"
 gem "redis"
 gem "webpacker"
 
 group :development, :test do
-  gem "haml_lint"
   gem "minitest-ci"
-  gem "rubocop"
-  gem "rubocop-performance"
-  gem "rubocop-rails"
   gem "simplecov"
   gem "simplecov-material", git: "https://github.com/chiefpansancolt/simplecov-material.git"
 end
@@ -31,7 +27,12 @@ end
 group :development do
   gem "foreman"
   gem "haml-rails"
+  gem "haml_lint"
   gem "listen", ">= 3.0.5", "< 3.2"
+  gem "mdl"
+  gem "rubocop"
+  gem "rubocop-performance"
+  gem "rubocop-rails"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
 end
