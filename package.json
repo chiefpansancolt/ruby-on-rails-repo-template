@@ -17,13 +17,13 @@
     "dev:start": "foreman start -f Procfile.dev",
     "test:main:start": "bundle exec rake test",
     "test:main:open": "open coverage/index.html",
-    "test:main": "npm-run-all test:*",
+    "test:main": "npm-run-all test:main:*",
     "test:chrome:start": "rails test:chrome",
     "test:chrome:open": "open coverage/index.html",
-    "test:chrome": "npm-run-all test:*",
+    "test:chrome": "npm-run-all test:firefox:*",
     "test:firefox:start": "rails test:firefox",
     "test:firefox:open": "open coverage/index.html",
-    "test:firefox": "npm-run-all test:*"
+    "test:firefox": "npm-run-all test:firefox:*"
   },
   "homepage": "",
   "repository": {
