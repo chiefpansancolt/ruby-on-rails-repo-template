@@ -20,7 +20,7 @@ jobs:
     - name: HAML Lint
       uses: chiefpansancolt/haml-lint-action@add-addition-gems
       with:
-        addition_gems: rubocop-rails rubocop-performance
+        additional_gems: rubocop-rails rubocop-performance
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
