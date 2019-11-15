@@ -18,7 +18,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: HAML Lint
-      uses: chiefpansancolt/haml-lint-action@add-additional-gems
+      uses: chiefpansancolt/haml-lint-action@add-addition-gems
       with:
         addition_gems: rubocop-rails rubocop-performance
       env:
