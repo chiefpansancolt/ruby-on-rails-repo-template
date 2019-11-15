@@ -19,8 +19,6 @@ jobs:
     - uses: actions/checkout@v1
     - name: HAML Lint
       uses: chiefpansancolt/haml-lint-action@add-addition-gems
-      with:
-        additional_gems: rubocop-rails rubocop-performance
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
