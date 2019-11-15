@@ -14,14 +14,14 @@ gem "kaminari"
 gem "pg", ">= 0.18", "< 2.0"
 gem "pry-rails"
 gem "puma"
-gem "rails", "~> 6.0.0.rc1"
+gem "rails"
 gem "redis"
 gem "webpacker"
 
 group :development, :test do
   gem "minitest-ci"
   gem "simplecov"
-  gem "simplecov-material", git: "https://github.com/chiefpansancolt/simplecov-material.git"
+  gem "simplecov-material"
 end
 
 group :development do
