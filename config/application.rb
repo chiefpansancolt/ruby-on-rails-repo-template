@@ -18,7 +18,7 @@ require "rails/test_unit/railtie"
 
 Bundler.require(*Rails.groups)
 
-module Gamfile
+module RubyTemplate
   class Application < Rails::Application
     config.load_defaults 6.0
     config.exceptions_app = routes
