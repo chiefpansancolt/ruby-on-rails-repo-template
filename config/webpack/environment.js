@@ -1,6 +1,6 @@
-const { environment } = require('@rails/webpacker')
-const erb =  require('./loaders/erb')
-const webpack = require('webpack')
+const {environment} = require('@rails/webpacker');
+const erb = require('./loaders/erb');
+const webpack = require('webpack');
 
 // Add an additional plugin of your choosing : ProvidePlugin
 environment.plugins.prepend(
@@ -9,10 +9,12 @@ environment.plugins.prepend(
     $: 'jquery',
     jquery: 'jquery',
     jQuery: 'jquery',
-    swal: 'sweetalert2'
-  })
-)
-environment.loaders.get('sass').use.find(item => item.loader === 'sass-loader').options.includePaths = ['node_modules']
+    swal: 'sweetalert2',
+  }),
+);
+environment.loaders.get('sass').use.find(
+  (item) => item.loader === 'sass-loader'
+).options.includePaths = ['node_modules'];
 
-environment.loaders.prepend('erb', erb)
-module.exports = environment
+environment.loaders.prepend('erb', erb);
+module.exports = environment;

@@ -23,7 +23,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "gamfile_production"
   config.action_mailer.perform_caching = false
   # config.action_mailer.raise_delivery_errors = false
-  config.i18n.fallbacks = true
+  config.i18n.fallbacks = [I18n.default_locale]
   config.active_support.deprecation = :notify
   config.log_formatter = ::Logger::Formatter.new
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new
