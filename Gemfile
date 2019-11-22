@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.6.3"
+ruby "2.6.5"
 
 gem "bootsnap", ">= 1.4.1", require: false
 gem "bugsnag"
@@ -16,10 +16,10 @@ gem "pry-rails"
 gem "puma"
 gem "rails"
 gem "redis"
+gem "sendgrid-rails"
 gem "webpacker"
 
 group :development, :test do
-  gem "minitest-ci"
   gem "simplecov"
   gem "simplecov-material"
 end
@@ -39,6 +39,5 @@ end
 
 group :test do
   gem "capybara", ">= 2.15", "< 4.0"
-  gem "chromedriver-helper"
   gem "selenium-webdriver"
 end
