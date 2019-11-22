@@ -11,6 +11,9 @@ capybara-*.html
 *.orig
 rerun.txt
 pickle-email-*.html
+/yarn-error.log
+public/packs/*
+public/packs-test/*
 
 # TODO Comment out this rule if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
@@ -46,12 +49,3 @@ bower.json
 
 # Ignore node_modules
 node_modules/
-
-
-/public/packs
-/public/packs-test/*
-/node_modules
-/test/reports/*
-/yarn-error.log
-yarn-debug.log*
-.yarn-integrity
