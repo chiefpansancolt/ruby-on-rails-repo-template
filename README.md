@@ -2,6 +2,7 @@
 
 A template repo for Ruby on Rails for Chiefpansancolts typical repo usage.
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/43355ca7777b6cfe6935/maintainability)](https://codeclimate.com/github/chiefpansancolt/ruby-on-rails-repo-template/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/43355ca7777b6cfe6935/test_coverage)](https://codeclimate.com/github/chiefpansancolt/ruby-on-rails-repo-template/test_coverage)
-[![CircleCI](https://circleci.com/gh/chiefpansancolt/ruby-on-rails-repo-template.svg?style=svg)](https://circleci.com/gh/chiefpansancolt/ruby-on-rails-repo-template)
+[![Ruby Build](https://github.com/chiefpansancolt/ruby-on-rails-template/workflows/ruby-build/badge.svg)]()
+[![Node Build](https://github.com/chiefpansancolt/ruby-on-rails-template/workflows/node-build/badge.svg)]()
+[![Test](https://github.com/chiefpansancolt/ruby-on-rails-template/workflows/ruby-test/badge.svg)]()
+[![GitHub release](https://img.shields.io/github/release/chiefpansancolt/ruby-on-rails-template.svg?style=flat-square)](https://github.com/chiefpansancolt/ruby-on-rails-template/releases)
