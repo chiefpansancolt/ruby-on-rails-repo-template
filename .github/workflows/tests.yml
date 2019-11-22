@@ -22,10 +22,17 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v1
 
-    - name: Set up Ruby 2.6.x
-      uses: actions/setup-ruby@v1
+    - uses: actions/cache@v1.0.1
+      id: cache
       with:
-        ruby-version: 2.6.x
+        path: ~/local/rubies
+        key: ruby-2.6.5
+    - name: Set up Ruby 2.6.x
+      uses: clupprich/ruby-build-action@v1.2.0
+      id: ruby
+      with:
+        ruby-version: 2.6.5
+        cache-available: ${{ steps.cache.outputs.cache-hit == 'true' }}
 
     - name: Build and create DB
       env:
