@@ -1,6 +1,6 @@
 {
   "name": "ruby-on-rails-repo-template",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Ruby on rails 6.0 Already generated Repo Template for Github",
   "private": true,
   "scripts": {
