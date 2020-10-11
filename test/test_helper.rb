@@ -2,8 +2,10 @@
 
 require "simplecov"
 
-SimpleCov.formatter = SimpleCov::Formatter::MaterialFormatter
-SimpleCov.start "rails"
+SimpleCov.formatter = SimpleCov::Formatter::TailwindFormatter
+SimpleCov.start "rails" do
+  enable_coverage :branch
+end
 # SimpleCov.minimum_coverage 90
 # SimpleCov.minimum_coverage_by_file 90
 
