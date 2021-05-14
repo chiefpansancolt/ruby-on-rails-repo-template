@@ -41,18 +41,6 @@
       "email": "chiefpansancolt@gmail.com"
     }
   ],
-  "dependencies": {
-    "@rails/webpacker": "^4.0.2",
-    "actioncable": "^5.2.2",
-    "jquery": "^3.4.1",
-    "jquery-ujs": "^1.2.2",
-    "material-components-web": "^1.0.1",
-    "material-design-icons-iconfont": "^5.0.1",
-    "rails-erb-loader": "^5.5.2",
-    "resolve-url-loader": "^3.1.0",
-    "sweetalert2": "^8.12.1",
-    "webpack-merge": "^4.2.1"
-  },
   "devDependencies": {
     "eslint": "^5.15.1",
     "eslint-config-google": "^0.13.0",
@@ -62,5 +50,8 @@
     "stylelint-order": "^2.1.0",
     "stylelint-scss": "^3.5.4",
     "webpack-dev-server": "^3.2.1"
+  },
+  "dependencies": {
+    "@rails/webpacker": "^5.3.0"
   }
 }
